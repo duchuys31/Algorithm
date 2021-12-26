@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std; 
-//S31[:v]
+/*S31*/
 #define int long long 
 #define ll long long
 #define db double
@@ -10,16 +10,17 @@ using namespace std;
 typedef pair <int,int> ii;
 typedef vector<int> v;
 
-const ll oo=LONG_LONG_MAX;
+const ll oo=1e18;
 const int mod=1e9+7;
 const int N=1e6+5;
 
 int di[]={-1,0,0,1,-1,-1,1,1};
 int dj[]={0,-1,1,0,-1,1,-1,1};
-//
+/**/
+/**/
 void solution(){
 }
-//
+/**/
 main(){
     ios_base::sync_with_stdio(0);cin.tie(0);
     // freopen("input.txt", "r", stdin);
@@ -31,4 +32,4 @@ main(){
     }
     return 0;
 }
-//
+/*THE END*/
