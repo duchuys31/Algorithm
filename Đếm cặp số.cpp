@@ -39,16 +39,16 @@ typedef pair<int, int> ii;
 typedef pair<db, db> dd;
 typedef vector<int> v;
 
-const ll oo = 1e18;
+const ll oo = 9223372036854775807;
 const int mod = 1e9 + 7;
 const int N = 1e6 + 5;
 
 int di[] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int dj[] = {0, -1, 1, 0, -1, 1, -1, 1};
 /**/
-int n;
-int a[N], l[N], r[N];
-int c[N];
+int n, x, ans;
+stack<int> st;
+unordered_map<int, int> cnt;
 /*Main*/
 void init()
 {
@@ -56,54 +56,26 @@ void init()
 void solution()
 {
     cin >> n;
-    For(i, 1, n) cin >> a[i];
-    a[0] = oo;
-    a[n + 1] = oo;
-    stack<int> st;
-    st.push(0);
     For(i, 1, n)
     {
-        while (a[i] >= a[st.top()])
-            st.pop();
-        l[i] = i - st.top();
-        st.push(i);
-    }
-    while (!st.empty())
-        st.pop();
-    st.push(n + 1);
-    rFor(i, n, 1)
-    {
-        while (a[i] >= a[st.top()])
-            st.pop();
-        r[i] = st.top() - i;
-        st.push(i);
-    }
-    while (!st.empty())
-        st.pop();
-    st.push(n + 1);
-    rFor(i, n, 1)
-    {
-        while (a[i] > a[st.top()])
-            st.pop();
-        c[i] = st.top() - i;
-        st.push(i);
-    }
-    int cnt = 0;
-    For(i, 1, n)
-    {
-        int j = i + 1;
-        int last = i + r[i];
-        while (j <= last && j <= n)
+        cin >> x;
+        while (!st.empty() && x > st.top())
         {
-            if (l[j] >= j - i)
-            {
-                cnt++;
-            }
-            // cnt++;
-            j += c[j];
+            cnt[st.top()]--;
+            st.pop();
+            ans++;
         }
+        if (!st.empty())
+        {
+            if (x == st.top())
+                ans += cnt[x] + (st.size() > cnt[x]);
+            else
+                ans += 1;
+        }
+        st.push(x);
+        cnt[x]++;
     }
-    cout << cnt << endl;
+    cout << ans << endl;
 }
 /**/
 main()
@@ -120,7 +92,7 @@ main()
         init();
         solution();
         // db end = (db)(clock());
-        // cout << (end - start) / CLOCKS_PER_SEC << "s" << endl;
+        // cout << (end - start) / CLOCKS_PER_SEC <<"s"<<endl;
     }
     return 0;
 }
