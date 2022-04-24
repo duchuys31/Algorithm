@@ -57,16 +57,15 @@ void solution()
     int a[n + 1], b[n + 1];
     For(i, 1, n) cin >> a[i];
     For(i, 1, n) cin >> b[i];
-    map<int, int> A, B;
-    For(i, 1, n) A[a[i]]++;
-    int l = 0;
+    map<int, int> cnt;
+    int l = 1;
     For(r, 1, n)
     {
         while (l <= n)
         {
             if (a[l] == b[r])
                 break;
-            B[a[l]]++;
+            cnt[a[l]]++;
             l++;
         }
         if (l > n)
@@ -74,8 +73,8 @@ void solution()
             cout << "NO\n";
             return;
         }
-        if (B[a[l]])
-            B[a[l]]--;
+        if (cnt[a[l]])
+            cnt[a[l]]--;
         else
             l++;
     }
