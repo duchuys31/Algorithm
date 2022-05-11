@@ -49,70 +49,16 @@ int dj[] = {0, -1, 1, 0, -1, 1, -1, 1};
 int n;
 int a[105][105];
 /*Main*/
-vector<string> tmp;
 string dp[105][105];
 void init()
 {
-}
-string solve(string x, string y)
-{
-    if (x.size() > y.size())
-        return x;
-    if (x.size() < y.size())
-        return y;
-    For(i, 0, x.size() - 1)
-    {
-        if (x[i] != y[i])
-        {
-            if (x[i] == '1')
-                return x;
-            else
-                return y;
-        }
-    }
-    return "";
 }
 void convert()
 {
 }
 string alpha = "#0123456789ABCDEF";
-void solution()
+void convert(string str)
 {
-    cin >> n;
-    For(i, 1, n)
-    {
-        For(j, 1, n) cin >> a[i][j];
-    }
-    For(i, 1, n)
-    {
-        For(j, 1, n)
-        {
-            dp[i][j] = "";
-            if (i == 1 && j == 1)
-            {
-                if (a[i][j])
-                    dp[i][j] = to_string(a[i][j]);
-            }
-            else if (i == 1)
-            {
-                if (a[i][j] || dp[i][j - 1].size())
-                    dp[i][j] = dp[i][j - 1] + to_string(a[i][j]);
-            }
-            else if (j == 1)
-            {
-                if (a[i][j] || dp[i - 1][j].size())
-                    dp[i][j] = dp[i - 1][j] + to_string(a[i][j]);
-            }
-            else
-            {
-                if (dp[i][j - 1].size() || dp[i - 1][j].size() || a[i][j])
-                {
-                    dp[i][j] = solve(dp[i][j - 1], dp[i - 1][j]) + to_string(a[i][j]);
-                }
-            }
-        }
-    }
-    string str = dp[n][n];
     while (str.size() % 4 != 0)
         str = "0" + str;
     string ans = "";
@@ -131,6 +77,32 @@ void solution()
             ans += "A" + d - 10;
     }
     cout << ans << endl;
+}
+void solution()
+{
+    cin >> n;
+    For(i, 1, n)
+    {
+        For(j, 1, n) cin >> a[i][j];
+    }
+    For(i, 1, n)
+    {
+        For(j, 1, n)
+        {
+            dp[i][j] = "";
+            if (i == 1 && j == 1)
+                dp[i][j] = to_string(a[i][j]);
+            else if (i == 1)
+                dp[i][j] = dp[i][j - 1] + to_string(a[i][j]);
+            else if (j == 1)
+                dp[i][j] = dp[i - 1][j] + to_string(a[i][j]);
+            else
+            {
+                dp[i][j] = max(dp[i][j - 1], dp[i - 1][j]) + to_string(a[i][j]);
+            }
+        }
+    }
+    convert(dp[n][n]);
 }
 /**/
 main()
