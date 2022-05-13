@@ -28,6 +28,7 @@ using namespace std;
       █▒███▒██████
 */
 #define FILE_ONL 0
+#define CLOCK 0
 #define int long long
 #define ll long long
 #define db double
@@ -75,12 +76,14 @@ main()
     cin >> t;
     For(i, 1, t)
     {
-        // cout<<"# Case "<<i<<" :\n";
-        // db start = (db)(clock());
+        // cout<<"#Case "<<i<<" :\n";
+        db start = (db)(clock());
         init();
         solution();
-        // db end = (db)(clock());
-        // cout << "Time : " << (end - start) / CLOCKS_PER_SEC << "s" << endl;
+#ifdef CLOCK
+        db end = (db)(clock());
+        cout << "Time : " << (end - start) / CLOCKS_PER_SEC << "s" << endl;
+#endif
     }
     return 0;
 }
