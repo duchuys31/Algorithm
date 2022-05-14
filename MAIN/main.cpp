@@ -2,12 +2,17 @@
 /* 𝑾𝒓𝒊𝒕𝒆𝒅 𝒃𝒚 𝑻𝒓𝒂𝒏 𝑫𝒖𝒄 𝑯𝒖𝒚 */
 
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+#include <ext/pb_ds/detail/standard_policies.hpp>
 #pragma GCC optimize("O3")
 #pragma GCC target("sse4")
-using namespace std;
 
-#define FILE_ON
-#define CLOCK_ON
+using namespace std;
+using namespace __gnu_pbds;
+
+// #define FILE_ON
+// #define CLOCK_ON
 #define int long long
 #define ll long long
 #define db double
@@ -17,9 +22,14 @@ using namespace std;
 #define reset(a, val) memset(a, val, sizeof(a));
 #define For(i, a, b) for (int i = a; i <= b; i++)
 #define rFor(i, a, b) for (int i = a; i >= b; i--)
-#define lb(a, x) (lower_bound(all(a), x) - a.begin())
+#define lb(a, x) lower_bound(a.begin(), a.end(), x) - a.begin()
 #define ub(a, x) (upper_bound(all(a), x) - a.begin())
 #define uniq(a) a.resize(unique(all(a)) - a.begin())
+
+template <typename T>
+using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+template <typename T>
+using ordered_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
 typedef pair<int, int> ii;
 typedef pair<db, db> dd;
@@ -47,19 +57,19 @@ main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-#ifdef FILE_OFF
+#ifdef FILE_ON
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
     int t = 1;
-    cin >> t;
+    // cin >> t;
     For(i, 1, t)
     {
         // cout<<"#Case "<<i<<" :\n";
         db start = (db)(clock());
         init();
         solution();
-#ifdef CLOCK_OFF
+#ifdef CLOCK_ON
         db end = (db)(clock());
         cout << "Time : " << (end - start) / CLOCKS_PER_SEC << "s" << endl;
 #endif
