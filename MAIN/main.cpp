@@ -1,5 +1,5 @@
 
-/* 𝑾𝒓𝒊𝒕𝒆𝒅 𝒃𝒚 𝑻𝒓𝒂𝒏 𝑫𝒖𝒄 𝑯𝒖𝒚 */
+/* 𝑾𝒓𝒊𝒕𝒕𝒆𝒏 𝒃𝒚 𝑻𝒓𝒂𝒏 𝑫𝒖𝒄 𝑯𝒖𝒚 */
 
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
@@ -45,12 +45,65 @@ const int N = 1e6 + 5;
 int di[] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int dj[] = {0, -1, 1, 0, -1, 1, -1, 1};
 /**/
+int n, q;
+ordered_set<int> X, Y;
+int dx[N], dy[N];
 /*𝑴𝒂𝒊𝒏*/
 void init()
 {
 }
 void solution()
 {
+    cin >> n >> q;
+    For(i, 1, q)
+    {
+        int t;
+        cin >> t;
+        if (t == 1)
+        {
+            int x, y;
+            cin >> x >> y;
+            dx[x]++;
+            dy[y]++;
+            if (dx[x] == 1)
+                X.insert(x);
+            if (dy[y] == 1)
+                Y.insert(y);
+        }
+        else if (t == 2)
+        {
+            int x, y;
+            cin >> x >> y;
+            dx[x]--;
+            dy[y]--;
+            if (!dx[x])
+                X.erase(x);
+            if (!dy[y])
+                Y.erase(y);
+        }
+        else
+        {
+            int x1, y1, x2, y2;
+            cin >> x1 >> y1 >> x2 >> y2;
+            if (x2 < x1)
+                swap(x1, x2);
+            int k = X.order_of_key(x2 + 1) - X.order_of_key(x1);
+            if (k == x2 - x1 + 1)
+            {
+                cout << "YES\n";
+                continue;
+            }
+            if (y2 < y1)
+                swap(y1, y2);
+            k = Y.order_of_key(y2 + 1) - Y.order_of_key(y1);
+            if (k == y2 - y1 + 1)
+            {
+                cout << "YES\n";
+                continue;
+            }
+            cout << "NO\n";
+        }
+    }
 }
 /**/
 main()
