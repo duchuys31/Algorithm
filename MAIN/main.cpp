@@ -20,7 +20,6 @@ using namespace __gnu_pbds;
 #define se second
 #define in binary_search
 #define all(a) a.begin(), a.end()
-#define range(a, b, c) a + b, a + c
 #define reset(a, val) memset(a, val, sizeof(a));
 #define For(i, a, b) for (int i = a; i <= b; i++)
 #define rFor(i, a, b) for (int i = a; i >= b; i--)
