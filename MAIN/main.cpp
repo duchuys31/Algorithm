@@ -25,6 +25,7 @@ using namespace __gnu_pbds;
 #define lb(a, x) lower_bound(a.begin(), a.end(), x) - a.begin()
 #define ub(a, x) (upper_bound(all(a), x) - a.begin())
 #define uniq(a) a.resize(unique(all(a)) - a.begin())
+#define in(a, x) binary_search(all(a), x);
 
 template <typename T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
