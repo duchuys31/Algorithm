@@ -18,14 +18,15 @@ using namespace __gnu_pbds;
 #define db double
 #define fi first
 #define se second
+#define in binary_search
 #define all(a) a.begin(), a.end()
+#define range(a, b, c) a + b, a + c
 #define reset(a, val) memset(a, val, sizeof(a));
 #define For(i, a, b) for (int i = a; i <= b; i++)
 #define rFor(i, a, b) for (int i = a; i >= b; i--)
 #define lb(a, x) lower_bound(a.begin(), a.end(), x) - a.begin()
 #define ub(a, x) (upper_bound(all(a), x) - a.begin())
 #define uniq(a) a.resize(unique(all(a)) - a.begin())
-#define in(a, x) binary_search(all(a), x);
 
 template <typename T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
