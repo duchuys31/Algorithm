@@ -23,7 +23,7 @@ using namespace __gnu_pbds;
 #define reset(a, val) memset(a, val, sizeof(a));
 #define For(i, a, b) for (int i = a; i <= b; i++)
 #define rFor(i, a, b) for (int i = a; i >= b; i--)
-#define lb(a, x) lower_bound(a.begin(), a.end(), x) - a.begin()
+#define lb(a, x) (lower_bound(all(a), x) - a.begin())
 #define ub(a, x) (upper_bound(all(a), x) - a.begin())
 #define uniq(a) a.resize(unique(all(a)) - a.begin())
 
@@ -63,7 +63,7 @@ main()
     freopen("output.txt", "w", stdout);
 #endif
     int t = 1;
-    // cin >> t;
+    cin >> t;
     For(i, 1, t)
     {
         // cout<<"#Case "<<i<<" :\n";
