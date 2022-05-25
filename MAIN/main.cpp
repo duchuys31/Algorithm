@@ -28,6 +28,35 @@ using namespace __gnu_pbds;
 #define uniq(a) a.resize(unique(all(a)) - a.begin())
 
 template <typename T>
+istream &operator>>(istream &in, vector<T> &a)
+{
+    for (auto &x : a)
+        in >> x;
+    return in;
+};
+template <typename T>
+ostream &operator<<(ostream &out, vector<T> &a)
+{
+    for (auto &x : a)
+        out << x << ' ';
+    return out;
+};
+template <typename T>
+istream &operator>>(istream &in, deque<T> &a)
+{
+    a.push_back(0);
+    for (auto &x : a)
+        in >> x;
+    return in;
+};
+template <typename T>
+ostream &operator<<(ostream &out, deque<T> &a)
+{
+    for (auto &x : a)
+        out << x << ' ';
+    return out;
+};
+template <typename T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 template <typename T>
 using ordered_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
@@ -77,7 +106,6 @@ main()
     }
     return 0;
 }
-
 /*
     𝐆𝐢𝐭𝐡𝐮𝐛: 𝐡𝐭𝐭𝐩𝐬://𝐠𝐢𝐭𝐡𝐮𝐛.𝐜𝐨𝐦/𝐝𝐮𝐜𝐡𝐮𝐲𝐬𝟑𝟏
     𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤: 𝐡𝐭𝐭𝐩𝐬://𝐰𝐰𝐰.𝐟𝐚𝐜𝐞𝐛𝐨𝐨𝐤.𝐜𝐨𝐦/𝐭𝐟.𝐡𝐮𝐲𝟐𝟖𝟑𝟗/
