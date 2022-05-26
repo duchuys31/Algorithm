@@ -93,6 +93,7 @@ void solution()
             return;
         }
     }
+    // Đ*Đ=Đ,S*S=Đ
     int l = 1, r = m;
     int id = -1;
     while (l <= r)
@@ -107,7 +108,7 @@ void solution()
             return;
         t *= a[id];
         if (t == -1)
-            r = x;
+            r = x - 1;
         else
             l = x + 1;
     }
