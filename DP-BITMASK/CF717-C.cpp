@@ -46,21 +46,48 @@ const int N = 1e6 + 5;
 int di[] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int dj[] = {0, -1, 1, 0, -1, 1, -1, 1};
 /**/
+int n;
+int a[N];
 /*𝑴𝒂𝒊𝒏*/
+bool bad()
+{
+    int s = 0;
+    For(i, 1, n) s += a[i];
+    if (s & 1)
+        return 0;
+    bitset<N> bit;
+    bit[0] = 1;
+    For(i, 1, n) bit |= (bit << a[i]);
+    return bit[s / 2];
+}
+int bit_cnt(int x)
+{
+    For(i, 0, 100)
+    {
+        if (x >> i & 1)
+            return i;
+    }
+    return 0;
+}
 void init()
 {
 }
 void solution()
 {
-    bitset<N> bit;
-    bit[0] = 1;
-    For(i, 1, 10) bit |= (bit << i);
-    For(i, 0, 100)
+    cin >> n;
+    For(i, 1, n) cin >> a[i];
+    if (bad())
     {
-        cout << i << ": ";
-        cout << bit[i] << endl;
+        ii mn(20, 0);
+        For(i, 1, n)
+        {
+            mn = min(mn, {bit_cnt(a[i]), i});
+        }
+        cout << 1 << "\n"
+             << mn.second << endl;
     }
-    cout << endl;
+    else
+        cout << 0 << endl;
 }
 /**/
 main()
