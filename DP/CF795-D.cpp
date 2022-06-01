@@ -77,20 +77,20 @@ int dj[] = {0, -1, 1, 0, -1, 1, -1, 1};
 /**/
 int n;
 int a[N];
-int f[N];
+int pref[N];
 int sum[N];
 bool check()
 {
     stack<int> st;
     For(i, 1, n)
     {
-        f[i] = sum[i] = a[i];
+        pref[i] = sum[i] = a[i];
         while (st.size() && a[i] >= a[st.top()])
         {
-            sum[i] = max(sum[i], sum[st.top()] + f[i]);
+            sum[i] = max(sum[i], sum[st.top()] + pref[i]);
             if (a[i] < sum[i])
                 return 0;
-            f[i] += f[st.top()];
+            pref[i] += pref[st.top()];
             st.pop();
         }
         st.push(i);
