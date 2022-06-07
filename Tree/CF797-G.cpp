@@ -109,6 +109,7 @@ void solution()
         auto it = st.lower_bound(id);
         if (it == st.begin() || a[*prev(it)] > a[id])
         {
+            // nhỏ hơn phần tử đằng trước hoặc là đứng đầu
             v del;
             for (auto it = st.lower_bound(id); it != st.end() && a[*it] >= a[id]; it++)
             {
