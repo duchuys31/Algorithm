@@ -106,7 +106,9 @@ typedef vector<char> vc;
 typedef vector<v> vv;
 
 int __lcm(int a, int b) { return a / __gcd(a, b) * b; }
-int __Max(int a, int b, int c) { return max(a, max(b, c)); }
+int _max(int a, int b, int c) { return max(a, max(b, c)); }
+int _min(int a, int b, int c) { return min(a, min(b, c)); }
+
 template <typename T>
 T random(const T &a, const T &b)
 {
