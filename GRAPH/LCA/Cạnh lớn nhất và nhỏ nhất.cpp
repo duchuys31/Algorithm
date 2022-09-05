@@ -1,5 +1,4 @@
 
-
 /* Created by Tran Duc Huy */
 
 #include <bits/stdc++.h>
@@ -172,7 +171,7 @@ void setup()
         {
             a[i][j] = 0;
             mn[i][j] = oo;
-            mx[i][j] = 9;
+            mx[i][j] = 0;
         }
     }
 }
