@@ -1,20 +1,18 @@
 struct LCA
 {
-    v height, euler, first, seg;
-    vb vis;
-    int n, m;
-    LCA(vv g, int root = 1)
+    v height, euler, first, seg, vis;
+    int m;
+    void init(int root = 1)
     {
-        n = g.size();
-        height.resize(n);
-        first.resize(n);
-        vis.resize(n, 0);
-        dfs(g, root);
+        height.resize(n + 5);
+        first.resize(n + 5);
+        vis.resize(n + 5, 0);
+        dfs(root);
         m = euler.size();
         seg.resize(m * 4);
         build(1, 0, m - 1);
     }
-    void dfs(vv g, int node, int h = 0)
+    void dfs(int node, int h = 0)
     {
         vis[node] = 1;
         height[node] = h;
@@ -24,7 +22,7 @@ struct LCA
         {
             if (vis[x])
                 continue;
-            dfs(g, x, h + 1);
+            dfs(x, h + 1);
             euler.pb(node);
         }
     }
